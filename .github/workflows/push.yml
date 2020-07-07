@@ -31,3 +31,14 @@ jobs:
     - run: yarn publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    - name: WeChat Work notification
+      uses: chf007/action-wechat-work@master
+      env:
+        WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
+      with:
+        msgtype: text
+        content: |
+          install:  npm i snapmaker-react-icon --latest 更新。
+          use: import { IconName } from snapmaker-react-ico
+          render:    <IconName size={32} color='green'/>
+          view all：https://www.figma.com/file/7Uj1ghIXzhtDgwDSCMLxqq/icon
