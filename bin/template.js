@@ -12,7 +12,7 @@ const getAttrs = (style) => {
   const strokeAttrs = {
     fill: 'none',
     stroke: 'color',
-    strokeWidth: 1,
+    strokeWidth: 2,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
     otherProps: '...otherProps'
