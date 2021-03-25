@@ -17,7 +17,7 @@ const getAttrs = (style) => {
     strokeLinejoin: 'round',
     otherProps: '...otherProps'
   }
-  return Object.assign({}, baseAttrs, style==='fill' ? fillAttrs : strokeAttrs)
+  return Object.assign({}, baseAttrs, fillAttrs)
 }
 
 const getElementCode = (ComponentName, attrs, svgCode) => `
