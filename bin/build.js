@@ -5,7 +5,7 @@ const fs = require('fs')
 const format = require('prettier-eslint')
 const processSvg = require('./processSvg')
 const { parseName } = require('./utils')
-const defaultStyle = process.env.npm_package_config_style || 'fill'
+const defaultStyle = 'fill' || process.env.npm_package_config_style
 const { getAttrs, getElementCode } = require('./template')
 const icons = require('../src/data.json')
 
@@ -47,7 +47,7 @@ const generateIndex = () => {
 const attrsToString = (attrs, style) => {
   console.log(style)
   return Object.keys(attrs).map((key) => {
-    // should distinguish fill or stroke
+    // should distinguish fill or stroke, and make sure style is correct
     if (key === 'width' || key === 'height' || key === style) {
       return key + '={' + attrs[key] + '}';
     }
@@ -61,7 +61,7 @@ const attrsToString = (attrs, style) => {
 // generate icon code separately
 const generateIconCode = async ({name}) => {
   const names = parseName(name, defaultStyle)
-  console.log(names)
+  console.log('generateIconCode names',names)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
   const code = fs.readFileSync(location)

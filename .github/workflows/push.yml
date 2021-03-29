@@ -39,6 +39,6 @@ jobs:
         msgtype: text
         content: |
           install:  npm i snapmaker-react-icon --latest 更新。
-          use: import { IconName } from snapmaker-react-ico
+          use: import { IconName } from snapmaker-react-icon
           render:    <IconName size={32} color='green'/>
-          view all：https://www.figma.com/file/7Uj1ghIXzhtDgwDSCMLxqq/icon
+          view all：https://www.figma.com/file/aMVKvxsgCaiz2ThIqL35y3/luban-icon?node-id=3%3A2
