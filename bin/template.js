@@ -3,6 +3,7 @@ const getAttrs = (style) => {
     xmlns: 'http://www.w3.org/2000/svg',
     width: 'size',
     height: 'size',
+    disabled: 'disabled',
     viewBox: '0 0 24 24',
   }
   const fillAttrs = {
@@ -25,7 +26,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   import PropTypes from 'prop-types';
 
   const ${ComponentName} = (props) => {
-    const { color, size, ...otherProps } = props;
+    const { color, size, disabled, ...otherProps } = props;
     return (
       <svg ${attrs}>
         ${svgCode}
@@ -35,6 +36,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
 
   ${ComponentName}.propTypes = {
     color: PropTypes.string,
+    disabled: PropTypes.bool,
     size: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
@@ -44,6 +46,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   ${ComponentName}.defaultProps = {
     color: 'currentColor',
     size: '24',
+    disabled: false,
   }
 
   export default ${ComponentName}

@@ -43,13 +43,18 @@ const generateIndex = () => {
   );
 }
 
-// generate attributes code
+// generate attributes code, style => 'fill'
 const attrsToString = (attrs, style) => {
   console.log(style)
+  // stroke or fill
   return Object.keys(attrs).map((key) => {
     // should distinguish fill or stroke, and make sure style is correct
-    if (key === 'width' || key === 'height' || key === style) {
+
+    if (key === 'width' || key === 'height' || key === 'disabled' ) {
       return key + '={' + attrs[key] + '}';
+    }
+    if (key === style) {
+      return key + '={ color ? color: (disabled ? "#E7E8E9" : "#676869") }';
     }
     if (key === 'otherProps') {
       return '{...otherProps}';
@@ -61,12 +66,12 @@ const attrsToString = (attrs, style) => {
 // generate icon code separately
 const generateIconCode = async ({name}) => {
   const names = parseName(name, defaultStyle)
-  console.log('generateIconCode names',names)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
   const code = fs.readFileSync(location)
   const svgCode = await processSvg(code)
   const ComponentName = names.componentName
+  console.log('generateIconCode names',names)
   const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
   const component = format({
     text: element,
