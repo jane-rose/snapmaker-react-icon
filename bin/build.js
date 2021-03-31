@@ -50,12 +50,12 @@ const attrsToString = (attrs, style) => {
   return Object.keys(attrs).map((key) => {
     // should distinguish fill or stroke, and make sure style is correct
 
-    if (key === 'width' || key === 'height' || key === 'disabled' ) {
+    if (key === 'width' || key === 'height' || key === 'disabled' || key === style ) {
       return key + '={' + attrs[key] + '}';
     }
-    if (key === style) {
-      return key + '={ color ? color: (disabled ? "#E7E8E9" : "#676869") }';
-    }
+    // if (key === style) {
+    //   return key + '={ color ? color: (disabled ? "#E7E8E9" : "#676869") }';
+    // }
     if (key === 'otherProps') {
       return '{...otherProps}';
     }
