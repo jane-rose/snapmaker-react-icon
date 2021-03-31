@@ -7,7 +7,7 @@ const getAttrs = (style) => {
     viewBox: '0 0 24 24',
   }
   const fillAttrs = {
-    fill: 'color',
+    fill: 'actualColor',
     otherProps: '...otherProps'
   }
   const strokeAttrs = {
@@ -27,6 +27,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
 
   const ${ComponentName} = (props) => {
     const { color, size, disabled, ...otherProps } = props;
+    let actualColor = color ? color : disabled ? '#E7E8E9' : '#676869'
     return (
       <svg ${attrs}>
         ${svgCode}
