@@ -14,7 +14,7 @@ const rootDir = path.join(__dirname, '..')
 // where icons code in
 const srcDir = path.join(rootDir, 'src')
 const iconsDir = path.join(rootDir, 'src/icons')
-const allIcon = {};
+// const allIcon = {};
 // generate index and d.ts file
 const generateIndex = () => {
   if (!fs.existsSync(srcDir)) {
@@ -99,7 +99,6 @@ const appendToIndex = ({ComponentName, name}) => {
     exportString,
     'utf-8',
   );
-  allIcon[ComponentName] = ComponentName
 
   const exportTypeString = `export const ${ComponentName}: Icon;\n`;
   fs.appendFileSync(
@@ -109,16 +108,16 @@ const appendToIndex = ({ComponentName, name}) => {
   );
 }
 
-const appendExportAll = () => {
-    // TODO ADD ts code
-    console.log('allIcon', allIcon );
-    const exportString = `export default ${allIcon} ;\r\n`;
-    fs.appendFileSync(
-      path.join(rootDir, 'src', 'index.js'),
-      exportString,
-      'utf-8',
-    );
-}
+// const appendExportAll = () => {
+//     // TODO ADD ts code
+//     console.log('allIcon', allIcon );
+//     const exportString = `export default ${allIcon} ;\r\n`;
+//     fs.appendFileSync(
+//       path.join(rootDir, 'src', 'index.js'),
+//       exportString,
+//       'utf-8',
+//     );
+// }
 
 generateIndex()
 
@@ -132,4 +131,4 @@ Object
       })
   })
 
-appendExportAll();
+// appendExportAll();
